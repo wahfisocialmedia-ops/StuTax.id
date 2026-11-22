@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PajakQuest | stutax.id</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--pr:#0b8272;--prd:#075f53;--ac:#ffc83d;--acd:#d99a00;--ok:#1f9d55;--no:#d93a40;--bg:#f2fbf8;--sf:#fff;--tx:#12332e;--mu:#4f6f69;--bd:#cfe8e2;--c21:#0b8272;--c22:#2563eb;--c23:#9333ea;--c24:#c2410c;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1f1c;--sf:#13302b;--tx:#e6f6f2;--mu:#9bbdb5;--bd:#25483f;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0b1f1c;--sf:#13302b;--tx:#e6f6f2;--mu:#9bbdb5;--bd:#25483f;color-scheme:dark}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:400 16px/1.55 Nunito,system-ui,sans-serif;padding-bottom:84px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--sf);z-index:30}
+h1,h2,h3{font-family:"Baloo 2",system-ui,sans-serif;line-height:1.15;margin:.2em 0 .4em}h1{font-size:clamp(2rem,6vw,3.2rem)}h2{font-size:1.6rem}h3{font-size:1.15rem}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--sf);border-bottom:2px solid var(--bd);display:flex;align-items:center;gap:12px;padding:8px 16px}
+.logo{font:800 1.4rem "Baloo 2",sans-serif;color:var(--pr);text-decoration:none;margin-right:auto}
+nav{position:fixed;left:0;right:0;bottom:0;background:var(--sf);border-top:2px solid var(--bd);display:flex;justify-content:space-around;padding:6px 4px calc(6px + env(safe-area-inset-bottom,0px));z-index:20}
+nav a{display:flex;flex-direction:column;align-items:center;font-size:.72rem;font-weight:700;color:var(--mu);text-decoration:none;padding:4px 8px;border-radius:12px}
+nav a[aria-current=page]{color:var(--pr);background:var(--bd)}nav a span{font-size:1.3rem}
+main{max-width:960px;margin:0 auto;padding:16px}
+.card{background:var(--sf);border:2px solid var(--bd);border-radius:20px;padding:16px;margin:0 0 14px}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.grid .card{margin:0}a.card{display:block;color:inherit;text-decoration:none}
+.c21{--k:var(--c21)}.c22{--k:var(--c22)}.c23{--k:var(--c23)}.c24{--k:var(--c24)}
+[class*=" c2"],[class^=c2]{border-top:6px solid var(--k)}
+.pb{background:var(--k)}
+.btn{font:800 1rem "Baloo 2",sans-serif;background:var(--pr);color:#fff;border:0;border-bottom:5px solid var(--prd);border-radius:16px;padding:10px 20px;cursor:pointer;text-decoration:none;display:inline-block;margin:4px 4px 4px 0;transition:transform .08s}
+.btn:active{transform:translateY(4px);border-bottom-width:1px;margin-bottom:8px}
+.btn.ac{background:var(--ac);border-color:var(--acd);color:#3a2a00}
+.btn.gh{background:var(--sf);color:var(--tx);border:2px solid var(--bd);border-bottom-width:5px}
+.opt{display:block;width:100%;text-align:left;font-family:Nunito,sans-serif;font-weight:700}
+.opt.ok{background:var(--ok);color:#fff;border-color:#157a40}.opt.no{background:var(--no);color:#fff;border-color:#a32a2f}
+.btn:disabled{cursor:default}
+.badge{display:inline-block;border-radius:99px;padding:2px 12px;font-weight:700;font-size:.85rem;color:#fff;background:var(--prd)}
+.bar{height:12px;background:var(--bd);border-radius:9px;overflow:hidden}.bar i{display:block;height:100%;background:var(--ac);border-radius:9px;transition:width .3s}
+.tut{display:flex;gap:12px;align-items:center}.tuti{width:56px;flex:none}.tut p{margin:0}
+.mu{color:var(--mu);font-size:.9rem}
+label{font-weight:700;display:block;margin:10px 0 4px}
+input,select{font:inherit;width:100%;padding:10px;border:2px solid var(--bd);border-radius:12px;background:var(--bg);color:var(--tx)}
+:focus-visible{outline:3px solid var(--ac);outline-offset:2px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}.tabs .btn{margin:0}.tabs .on{background:var(--ac);color:#3a2a00;border-color:var(--acd)}
+.path{border-left:6px dashed var(--bd);margin-left:22px;padding-left:22px}
+.node{display:flex;gap:12px;align-items:center;width:100%;text-align:left;margin:0 0 14px;position:relative}
+.node b{position:absolute;left:-46px;width:44px;height:44px;border-radius:50%;background:var(--k);color:#fff;display:grid;place-items:center;font:800 1.2rem "Baloo 2"}
+.mg{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.cd{aspect-ratio:1;border-radius:14px;border:2px solid var(--bd);border-bottom-width:5px;background:var(--pr);color:#fff;font:700 .78rem/1.1 Nunito;padding:4px;cursor:pointer}
+.cd.f,.cd.m{background:var(--sf);color:var(--tx)}.cd.m{border-color:var(--ok)}
+table{width:100%;border-collapse:collapse}td{padding:8px 4px;border-bottom:1px solid var(--bd)}tr.me{background:var(--ac);color:#3a2a00;font-weight:700}
+.mb{position:fixed;inset:0;background:#0009;display:grid;place-items:center;padding:16px;z-index:60}.mb .card{max-width:480px}
+.toast{position:fixed;left:50%;bottom:96px;transform:translateX(-50%);background:var(--prd);color:#fff;padding:10px 18px;border-radius:99px;z-index:70;font-weight:700}
+.cf{position:fixed;top:-14px;width:10px;height:14px;border-radius:2px;animation:fall 1.3s ease-in forwards;z-index:50;pointer-events:none}
+@keyframes fall{to{transform:translateY(105vh) rotate(540deg)}}
+.shake{animation:sk .4s}@keyframes sk{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+footer{max-width:960px;margin:0 auto;padding:0 16px 24px;color:var(--mu);font-size:.85rem}
+.av{font-size:1.6rem;padding:4px 10px}.av.on{background:var(--ac)}
+@media(min-width:721px){body{padding-bottom:24px}nav{position:static;border:0;padding:0;gap:4px;background:none}nav a{flex-direction:row;gap:6px;font-size:.95rem}.mg{max-width:480px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header><a class="logo" href="#beranda">🪙 PajakQuest</a>
+<nav aria-label="Navigasi utama"><a href="#beranda"><span>🏠</span>Beranda</a><a href="#materi"><span>📘</span>Materi</a><a href="#kalkulator"><span>🧮</span>Kalkulator</a><a href="#games"><span>🎮</span>Games</a><a href="#leaderboard"><span>🏆</span>Peringkat</a><a href="#profil"><span>🙂</span>Profil</a></nav>
+<button class="btn gh" id="th" aria-label="Ganti mode terang atau gelap" style="margin:0;padding:6px 12px">🌓</button></header>
+<main id="app" tabindex="-1"></main>
+<footer><p>PajakQuest by stutax.id · Tarif dan angka terakhir diperbarui: <b id="upd"></b>.</p>
+<p><b>Disclaimer:</b> situs ini hanya untuk pembelajaran, bukan konsultasi pajak resmi. Untuk keputusan nyata, rujuk peraturan terbaru di pajak.go.id atau tanya konsultan pajak.</p>
+<button class="btn gh" data-a="about">Tentang kami</button></footer>
+<script>
+/* ===== KONFIGURASI TARIF (ubah di sini saat aturan berubah) ===== */
+const CFG={upd:"22 November 2026",
+ptkp:{"TK/0":54e6,"TK/1":58.5e6,"TK/2":63e6,"TK/3":67.5e6,"K/0":58.5e6,"K/1":63e6,"K/2":67.5e6,"K/3":72e6},
+cat:{"TK/0":"A","TK/1":"A","K/0":"A","TK/2":"B","TK/3":"B","K/1":"B","K/2":"B","K/3":"C"},
+p17:[[60e6,.05],[250e6,.15],[500e6,.25],[5e9,.3],[Infinity,.35]],
+bj:{r:.05,max:6e6},np:1.2,badan:.22,
+/* TER bulanan PMK 168/2023: b = batas atas lapis (juta Rp), pre = tarif awal (%), lalu 5..33, lalu 34 */
+ter:{A:{b:"5.4 5.65 5.95 6.3 6.75 7.5 8.55 9.65 10.05 10.35 10.7 11.05 11.6 12.5 13.75 15.1 16.95 19.75 24.15 26.45 28 30.05 32.4 35.4 39.1 43.85 47.8 51.4 56.3 62.2 68.6 77.5 89 103 125 157 206 337 454 550 695 910 1400",p:"0 .25 .5 .75 1 1.25 1.5 1.75 2 2.25 2.5 3 3.5 4"},
+B:{b:"6.2 6.5 6.85 7.3 9.2 10.75 11.25 11.6 12.6 13.6 14.95 16.4 18.45 21.85 26 27.7 29.35 31.45 33.95 37.1 41.1 45.8 49.5 53.8 58.5 64 71 80 93 109 129 163 211 374 459 555 704 957 1405",p:"0 .25 .5 .75 1 1.5 2 2.5 3 4"},
+C:{b:"6.6 6.95 7.35 7.8 8.85 9.8 10.95 11.2 12.05 12.95 14.1 15.55 17.05 19.9 24.3 26.6 28.1 30.1 32.6 35.4 38.9 43 47.4 51.2 55.8 60.4 66.7 74.5 83.2 95.6 110.5 134 169 221 390 463 561 709 965 1419",p:"0 .25 .5 .75 1 1.25 1.5 1.75 2 3 4"}},
+/* PPh 22: [nama, tarif] */
+t22:{bd:["Pembelian barang oleh bendahara/instansi pemerintah",.015],ia:["Impor barang umum, punya API (tarif acuan)",.025],in:["Impor barang umum, tanpa API (tarif acuan)",.075],it:["Impor barang tertentu (Lampiran C PMK 51/2025)",.005],em:["Impor emas batangan",.0025],mk:["Penjualan lewat marketplace (omzet)",.005]}};
+
+/* ===== BANK SOAL: [PPh, tingkat e/m/h, soal, [jawaban benar, salah, salah], penjelasan] ===== */
+const QS=[
+[21,"e","PPh 21 dikenakan atas penghasilan berupa…",["Gaji dan upah pekerja","Bunga deposito","Sewa gedung"],"PPh 21 adalah pajak atas penghasilan dari pekerjaan, jasa, atau kegiatan orang pribadi, seperti gaji."],
+[21,"e","Berapa PTKP untuk TK/0 (lajang tanpa tanggungan) per tahun?",["Rp54 juta","Rp58,5 juta","Rp72 juta"],"TK/0 = Rp54.000.000, lalu tambah Rp4,5 juta per tanggungan (maksimal 3)."],
+[21,"m","Sejak 2024, PPh 21 pegawai tetap masa Januari–November dihitung dengan…",["Tarif Efektif Rata-rata (TER)","Tarif flat 5%","Tarif final 0,5%"],"TER diatur PMK 168/2023. Desember dihitung ulang dengan tarif Pasal 17."],
+[21,"m","Tarif Pasal 17 untuk penghasilan kena pajak sampai Rp60 juta adalah…",["5%","10%","15%"],"Lapisan tarifnya 5%, 15%, 25%, 30%, 35%. Hanya kelebihan di tiap lapis yang kena tarif lapis itu."],
+[21,"m","Karyawan tanpa NPWP dipotong PPh 21 dengan tarif…",["Lebih tinggi 20%","Sama saja","Dibebaskan"],"Tanpa NPWP, pemotongan menjadi 120% dari tarif normal."],
+[21,"h","Kategori TER untuk status K/3 adalah…",["C","A","B"],"A: TK/0, TK/1, K/0. B: TK/2, TK/3, K/1, K/2. C: K/3."],
+[21,"h","Kenapa PPh 21 pegawai tetap dihitung ulang di bulan Desember?",["Pemotongan TER hanya cicilan; pajak setahun harus sesuai Pasal 17","Karena TER dihapus tiap Desember","Karena ganti tahun"],"Selisih TER dengan hitungan Pasal 17 dibereskan di masa pajak terakhir."],
+[21,"h","Biaya jabatan pegawai tetap maksimal berapa per tahun?",["Rp6 juta","Rp12 juta","Rp60 juta"],"Biaya jabatan 5% dari bruto, maksimal Rp500 ribu per bulan atau Rp6 juta per tahun."],
+[22,"e","PPh 22 adalah pajak yang…",["Dipungut saat transaksi tertentu, misalnya impor","Hanya untuk gaji","Hanya dibayar di luar negeri"],"PPh 22 dipungut pihak tertentu pada transaksi tertentu, seperti impor dan pembelian oleh pemerintah."],
+[22,"e","Siapa yang memungut PPh 22 saat barang diimpor?",["Bea dan Cukai","Bank","Sekolah"],"Ditjen Bea dan Cukai memungutnya saat barang masuk."],
+[22,"m","Tarif PPh 22 pembelian barang oleh bendahara pemerintah (rekanan ber-NPWP)?",["1,5%","0,5%","15%"],"1,5% dari harga beli tanpa PPN. Transaksi sampai Rp2 juta dikecualikan."],
+[22,"m","Sejak 1 Oktober 2026 marketplace memungut PPh 22 sebesar…",["0,5% dari omzet pedagang","5% dari laba","1,5% dari gaji"],"PMK 37/2025: 0,5% dari peredaran bruto pedagang dalam negeri, di luar PPN."],
+[22,"m","Bagaimana sifat PPh 22 pada umumnya?",["Bisa dikreditkan di SPT Tahunan","Selalu hilang","Selalu final"],"Umumnya menjadi kredit pajak. Khusus marketplace, dapat menjadi bagian pelunasan PPh final UMKM."],
+[22,"h","Dinas membeli ATK Rp1,5 juta dari satu toko. PPh 22-nya?",["Tidak dipungut","1,5%","15%"],"Transaksi sampai Rp2 juta (tidak dipecah-pecah) tidak dipungut PPh 22."],
+[22,"h","Bendahara beli barang Rp10 juta (tanpa PPN) dari rekanan ber-NPWP. PPh 22?",["Rp150.000","Rp15.000","Rp1.500.000"],"Rp10.000.000 × 1,5% = Rp150.000."],
+[22,"h","Rekanan tanpa NPWP dipungut PPh 22 pemerintah dengan tarif…",["3% (dua kali lipat)","1,5%","0,75%"],"Tanpa NPWP tarifnya lebih tinggi 100%, jadi 3%."],
+[23,"e","PPh 23 dipotong atas…",["Jasa tertentu, sewa harta, dan royalti","Gaji pegawai tetap","Impor barang"],"PPh 23 dipotong pemberi penghasilan atas modal, hadiah, sewa, dan jasa tertentu."],
+[23,"e","Tarif PPh 23 untuk jasa konsultan?",["2%","15%","0,5%"],"Sewa harta dan jasa tertentu 2%. Dividen, bunga, royalti, dan hadiah 15%."],
+[23,"m","Tarif PPh 23 atas royalti adalah…",["15%","2%","5%"],"Royalti termasuk kelompok tarif 15%."],
+[23,"m","Dasar pemotongan PPh 23 adalah…",["Nilai bruto tanpa PPN","Laba bersih","Gaji setahun"],"Pemotongan dihitung dari jumlah bruto sebelum PPN."],
+[23,"m","Jasa konsultan Rp20 juta (tanpa PPN), penerima ber-NPWP. PPh 23?",["Rp400.000","Rp3.000.000","Rp40.000"],"Rp20.000.000 × 2% = Rp400.000."],
+[23,"h","Penerima jasa tanpa NPWP: tarif PPh 23 yang 2% menjadi…",["4%","3%","2,4%"],"Tanpa NPWP tarif lebih tinggi 100%."],
+[23,"h","Sewa tanah dan bangunan dikenai…",["PPh final, bukan PPh 23","PPh 23 sebesar 2%","PPh 23 sebesar 15%"],"Sewa tanah dan/atau bangunan dikenai PPh final Pasal 4 ayat 2."],
+[23,"h","Untuk apa penerima penghasilan menyimpan bukti potong PPh 23?",["Sebagai kredit pajak di SPT Tahunan","Tidak ada gunanya","Untuk tiket gratis"],"PPh 23 yang dipotong bisa dikreditkan terhadap pajak terutang."],
+[24,"e","PPh 24 mengatur…",["Kredit pajak luar negeri","Pajak impor","Pajak gaji"],"PPh 24 mencegah pajak berganda atas penghasilan dari luar negeri."],
+[24,"e","Tujuan utama PPh 24 adalah…",["Menghindari pajak berganda","Menaikkan tarif","Mengganti PPN"],"Penghasilan luar negeri yang sudah dipajaki di sana tidak dipajaki penuh lagi di Indonesia."],
+[24,"m","Kredit pajak luar negeri tidak boleh melebihi…",["Pajak di Indonesia atas penghasilan itu","Seratus juta rupiah","Satu persen omzet"],"Ada batas kredit supaya pajak dalam negeri tidak tergerus lebih dari semestinya."],
+[24,"m","Bukti apa yang dibutuhkan untuk mengklaim kredit PPh 24?",["Bukti pemotongan atau pembayaran pajak di luar negeri","Struk belanja","Kartu pelajar"],"Tanpa bukti pajak luar negeri, kredit tidak bisa diklaim."],
+[24,"m","Pajak LN Rp5 juta, batas kredit hasil rumus Rp8 juta. Kredit yang diakui?",["Rp5 juta","Rp8 juta","Rp13 juta"],"Diambil yang terkecil, jadi Rp5 juta."],
+[24,"h","Batas kredit PPh 24 dihitung dengan…",["Penghasilan LN ÷ total penghasilan × PPh terutang","Gaji × 5%","Omzet × 0,5%"],"Rumus perbandingan penghasilan luar negeri terhadap total penghasilan."],
+[24,"h","Pajak LN Rp12 juta, batas rumus Rp9 juta. Kredit yang diakui?",["Rp9 juta","Rp12 juta","Rp21 juta"],"Kredit tidak boleh melebihi batas, jadi Rp9 juta."],
+[24,"h","Kelebihan pajak LN di atas batas kredit…",["Tidak dapat dikreditkan pada tahun itu","Dikembalikan tunai","Jadi hadiah"],"Hanya sampai batas kredit yang boleh dikurangkan."]];
+/* Pajak Detektif: [skenario, PPh benar, penjelasan] */
+const DT=[["Andi menerima gaji bulanan dari kantornya.",21,"Gaji dari pekerjaan adalah objek PPh 21."],
+["Sebuah perusahaan mengimpor mesin dan Bea Cukai memungut pajak di muka.",22,"Pungutan saat impor adalah PPh 22."],
+["PT Maju membayar jasa konsultan ke CV Cerdas.",23,"Pembayar jasa memotong PPh 23, tarif 2%."],
+["Rina dipotong pajak di Singapura atas honor proyek dan ingin mengklaimnya di SPT Indonesia.",24,"Klaim pajak luar negeri adalah kredit PPh 24."],
+["Dinas membeli laptop Rp30 juta dari sebuah toko.",22,"Pembelian oleh instansi pemerintah dipungut PPh 22."],
+["Perusahaan membayar royalti kepada pemilik merek.",23,"Royalti dipotong PPh 23 dengan tarif 15%."],
+["Toko online di marketplace besar dipungut 0,5% dari omzetnya.",22,"Pemungutan oleh marketplace adalah PPh 22."],
+["Dewi menerima THR dan bonus dari tempat kerjanya.",21,"Bonus dan THR adalah penghasilan dari pekerjaan, objek PPh 21."]];
+const PR=[["PTKP","Batas penghasilan yang tidak kena pajak"],["TER","Tarif efektif bulanan PPh 21"],["API","Angka Pengenal Importir"],["Bruto","Jumlah sebelum dikurangi apa pun"],["Bukti potong","Bukti pajak sudah dipotong"],["Kredit LN","Pengurang pajak dari pajak luar negeri"],["NPWP","Nomor Pokok Wajib Pajak"],["PKP","Penghasilan kena pajak"]];
+/* ===== MATERI ===== */
+const CH={21:{t:"PPh Pasal 21",i:"👷",d:"Pajak atas penghasilan dari pekerjaan, jasa, atau kegiatan orang pribadi, seperti gaji, honor, dan bonus.",s:"Subjek: pegawai tetap dan tidak tetap, penerima pensiun, tenaga ahli. Objek: gaji, tunjangan, honorarium, bonus, THR.",r:"TER bulanan kategori A/B/C untuk Januari–November, lalu tarif Pasal 17 (5%–35%) untuk Desember. Tanpa NPWP, +20%.",h:"Bulanan: bruto × tarif TER. Desember: pajak setahun menurut Pasal 17 dikurangi PPh 21 Januari–November.",c:"Dina (TK/0) bergaji Rp10.000.000. Di TER A, lapis Rp9,65–10,05 juta tarifnya 2%, jadi PPh 21 = Rp200.000.",a:"PTKP itu seperti “area aman” di gim: penghasilan di dalamnya tidak kena pajak.",k:["PTKP TK/0 = Rp54 juta/tahun","Bulanan pakai TER, Desember pakai Pasal 17","Tanpa NPWP dipotong lebih tinggi 20%"]},
+22:{t:"PPh Pasal 22",i:"📦",d:"Pajak yang dipungut di muka pada transaksi tertentu: impor, pembelian oleh pemerintah, dan penjualan lewat marketplace.",s:"Pemungut: Bea Cukai, bendahara pemerintah, marketplace. Dipungut dari importir, rekanan, dan pedagang.",r:"Pemerintah 1,5%; impor tertentu 0,5% (acuan umum 2,5% ber-API / 7,5% tanpa API); emas batangan 0,25%; marketplace 0,5% omzet. Tanpa NPWP bisa lebih tinggi.",h:"Nilai transaksi (tanpa PPN) × tarif. Pembelian pemerintah sampai Rp2 juta dikecualikan.",c:"Dinas membeli barang Rp10 juta dari rekanan ber-NPWP: Rp10.000.000 × 1,5% = Rp150.000.",a:"Seperti uang muka pajak: dibayar di depan, nanti jadi kredit di SPT.",k:["Dipungut saat transaksi tertentu","Umumnya jadi kredit pajak","Marketplace memungut 0,5% sejak 1 Okt 2026"]},
+23:{t:"PPh Pasal 23",i:"💼",d:"Pajak yang dipotong pemberi penghasilan atas modal, hadiah, sewa harta, dan jasa tertentu.",s:"Pemotong: badan atau pihak yang ditunjuk. Penerima: orang pribadi atau badan atas dividen, bunga, royalti, hadiah, sewa, jasa.",r:"15% untuk dividen, bunga, royalti, hadiah. 2% untuk sewa harta (bukan tanah/bangunan) dan jasa tertentu. Tanpa NPWP dua kali lipat.",h:"Nilai bruto tanpa PPN × tarif. Pemotong wajib memberi bukti potong.",c:"PT membayar jasa konsultan Rp20 juta: Rp20.000.000 × 2% = Rp400.000. Konsultan menerima Rp19,6 juta dan bukti potong.",a:"Seperti dipotong langsung di kasir sebelum uangnya sampai ke kamu.",k:["Jasa dan sewa 2%","Royalti, bunga, dividen, hadiah 15%","Bukti potong = kredit pajak"]},
+24:{t:"PPh Pasal 24",i:"🌍",d:"Kredit pajak luar negeri: pengurang PPh terutang karena penghasilan luar negeri sudah kena pajak di sana, supaya tidak bayar dua kali.",s:"Wajib pajak dalam negeri yang punya penghasilan dari luar negeri dan sudah dipajaki di negara sumber.",r:"Tidak ada tarif sendiri. Yang ada adalah batas kredit supaya pajak dalam negeri tidak berkurang berlebihan.",h:"Kredit = yang terkecil dari: pajak dibayar di LN; (penghasilan LN ÷ total penghasilan kena pajak) × PPh terutang; total PPh terutang.",c:"Pajak LN Rp5 juta, batas hasil rumus Rp8 juta: kredit yang diakui Rp5 juta.",a:"Seperti kupon diskon agar kamu tidak membayar pajak yang sama dua kali.",k:["Mencegah pajak berganda","Kredit tidak boleh lewat batas","Perlu bukti pajak luar negeri"]}};
+
+/* ===== UTIL & STATE ===== */
+const $=(s,e=document)=>e.querySelector(s),sh=a=>a.map(x=>[Math.random(),x]).sort((x,y)=>x[0]-y[0]).map(x=>x[1]);
+const rp=n=>"Rp"+Math.round(n).toLocaleString("id-ID"),pc=r=>+(r*100).toFixed(2);
+const S0={xp:0,st:0,last:"",wid:0,wk:0,name:"Tamu",av:"🦊",bd:[],h:[],pts:{21:0,22:0,23:0,24:0},done:[]};
+let S;try{S={...S0,...JSON.parse(localStorage.getItem("pq")||"{}")}}catch(e){S={...S0}}
+const save=()=>{try{localStorage.setItem("pq",JSON.stringify(S))}catch(e){}};
+const B={first:"Langkah Pertama 🎯",st3:"Streak 3 Hari 🔥",cb5:"Combo x5 ⚡",lv3:"Level 3 ⭐",ch4:"Lulus 4 Bab 📚",d:"Detektif Jitu 🕵️"};
+const lv=()=>Math.floor(S.xp/100)+1,xpb=()=>S.xp%100;
+function toast(t){const d=document.createElement("div");d.className="toast";d.setAttribute("role","status");d.textContent=t;document.body.append(d);setTimeout(()=>d.remove(),2600)}
+function award(k){if(!S.bd.includes(k)){S.bd.push(k);toast("Lencana baru: "+B[k]);save()}}
+function addPts(p,n){const d=new Date().toISOString().slice(0,10);if(S.last!==d){S.st=S.last===new Date(Date.now()-864e5).toISOString().slice(0,10)?S.st+1:1;S.last=d}
+const w=Math.floor(Date.now()/6048e5);if(S.wid!==w){S.wid=w;S.wk=0}if(p)S.pts[p]+=n;S.xp+=n;S.wk+=n;award("first");if(S.st>=3)award("st3");if(S.xp>=200)award("lv3");save()}
+const tuti=ok=>`<svg class="tuti" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="28" fill="#ffc83d" stroke="#d99a00" stroke-width="4"/><circle cx="24" cy="27" r="3.5" fill="#3a2a00"/><circle cx="40" cy="27" r="3.5" fill="#3a2a00"/><path d="M22 39q10 ${ok?11:-9} 20 0" fill="none" stroke="#3a2a00" stroke-width="3.5" stroke-linecap="round"/></svg>`;
+function fx(ok,el){if(ok){for(let i=0;i<26;i++){const s=document.createElement("i");s.className="cf";s.style.cssText=`left:${Math.random()*100}vw;background:hsl(${Math.random()*360} 85% 55%);animation-delay:${Math.random()*.3}s`;document.body.append(s);setTimeout(()=>s.remove(),1800)}}else if(el){el.classList.remove("shake");void el.offsetWidth;el.classList.add("shake")}}
+function modal(h){const d=document.createElement("div");d.className="mb";d.innerHTML=`<div class="card" role="dialog" aria-modal="true">${h}<button class="btn" data-a="mc">Tutup</button></div>`;document.body.append(d);$("button",d).focus()}
+/* ===== PERTANYAAN (dipakai materi & game) ===== */
+let TM;
+function ask(q,el,onAns,onNext,tmo,lbl){clearInterval(TM);const o=sh(q[3].map((t,i)=>({t,c:!i})));let fin=0;
+el.innerHTML=`${tmo?'<div class="bar"><i id="tb" style="width:100%"></i></div>':""}<h3>${q[2]}</h3>${o.map((x,i)=>`<button class="btn gh opt" data-i="${i}">${x.t}</button>`).join("")}<div id="fb" role="status"></div>`;
+const done=pick=>{if(fin)return;fin=1;clearInterval(TM);const ok=pick>=0&&o[pick].c;el.querySelectorAll(".opt").forEach((b,i)=>{b.disabled=true;if(o[i].c)b.classList.add("ok");else if(i===pick)b.classList.add("no")});fx(ok,el);
+$("#fb",el).innerHTML=`<div class="tut" style="margin-top:10px">${tuti(ok)}<p><b>${ok?"Benar! ":pick<0?"Waktu habis. ":"Belum tepat. "}</b>${q[4]}</p></div>${onNext?`<button class="btn ac" id="nx">${lbl||"Lanjut"}</button>`:""}`;
+onAns&&onAns(ok);if(onNext)$("#nx",el).onclick=onNext};
+el.onclick=e=>{const b=e.target.closest(".opt");if(b)done(+b.dataset.i)};
+if(tmo){const t0=Date.now();TM=setInterval(()=>{const p=1-(Date.now()-t0)/(tmo*1e3);$("#tb",el).style.width=Math.max(0,p*100)+"%";if(p<=0)done(-1)},100)}}
+/* ===== KALKULATOR ===== */
+function terRate(c,b){const t=CFG.ter[c],bs=t.b.split(" ").map(x=>x*1e6),r=[...t.p.split(" ").map(Number)];for(let i=5;i<=33;i++)r.push(i);r.push(34);const i=bs.findIndex(x=>b<=x);return r[i<0?bs.length:i]}
+function p17(pkp){let t=0,pv=0,rows=[];for(const[u,r]of CFG.p17){if(pkp>pv){const s=Math.min(pkp,u)-pv;rows.push(`${rp(s)} × ${pc(r)}% = ${rp(s*r)}`);t+=s*r;pv=u}}return{t,rows}}
+function c21(f){const b=+f.b,s=f.s,np=f.n==="1";if(!(b>0))return;let st=[],t;
+if(f.m==="b"){const c=CFG.cat[s],r=terRate(c,b);t=b*r/100;st.push(`Status ${s} → kategori TER ${c}`,`Bruto ${rp(b)} berada di lapis tarif ${r}%`,`${rp(b)} × ${r}% = ${rp(t)}`);if(!np){t*=CFG.np;st.push(`Tanpa NPWP: × 120% = ${rp(t)}`)}
+return{t,st,u:"per bulan",w:"Sejak 2024 pemotongan bulanan memakai TER supaya sederhana: tarif tinggal dilihat dari tabel. Pajak setahun tetap dibereskan dengan tarif Pasal 17 di bulan Desember.",l:"PP 58/2023 dan PMK 168/2023"}}
+const g=b*12,bj=Math.min(g*CFG.bj.r,CFG.bj.max),ne=g-bj,pt=CFG.ptkp[s],pkp=Math.max(0,Math.floor((ne-pt)/1e3)*1e3),x=p17(pkp);t=x.t;
+st.push(`Bruto setahun: ${rp(b)} × 12 = ${rp(g)}`,`Biaya jabatan 5% (maks. Rp6 juta) = ${rp(bj)}`,`Penghasilan neto = ${rp(ne)}`,`PTKP ${s} = ${rp(pt)}`,`PKP (dibulatkan ribuan) = ${rp(pkp)}`,...x.rows.map(r=>"Lapis: "+r));
+if(!np){t*=CFG.np;st.push(`Tanpa NPWP: × 120% = ${rp(t)}`)}
+return{t,st,u:"per tahun",x:`<p>Setara ± ${rp(t/12)} per bulan (tanpa bonus dan iuran pensiun).</p>`,w:"Penghasilan neto dikurangi PTKP menjadi PKP, lalu dikenai tarif berlapis. Hanya bagian yang melewati batas lapis yang kena tarif lebih tinggi.",l:"Pasal 17 UU PPh (UU HPP) dan PMK 168/2023"}}
+function c22(f){const v=+f.v,[nm,r0]=CFG.t22[f.k];if(!(v>0))return;let r=r0,st=[`Jenis: ${nm}`,`Tarif dasar ${pc(r)}%`];
+const w="PPh 22 dipungut di muka pada transaksi tertentu. Besarnya dihitung dari nilai transaksi tanpa PPN dikali tarif sesuai jenisnya.",l=f.k==="mk"?"PMK 37/2025 dan PER-15/PJ/2025":"PMK 51/2025";
+if(f.k==="bd"){if(v<=2e6)return{t:0,u:"(tidak dipungut)",st:[...st,`Nilai ${rp(v)} ≤ Rp2 juta dan tidak dipecah-pecah → dikecualikan`],w,l};if(f.n==="0"){r*=2;st.push(`Tanpa NPWP: tarif dua kali lipat = ${pc(r)}%`)}}
+const t=v*r;st.push(`${rp(v)} × ${pc(r)}% = ${rp(t)}`);return{t,st,u:"PPh 22",w,l,x:f.k==="mk"?"<p class=mu>Pedagang beromzet sampai Rp500 juta/tahun dapat dikecualikan bila memenuhi syarat.</p>":""}}
+function c23(f){const v=+f.v,r0=f.k/100;if(!(v>0))return;let r=r0,st=[`Tarif ${f.k}%`];if(f.n==="0"){r*=2;st.push(`Tanpa NPWP: tarif dua kali lipat = ${pc(r)}%`)}
+const t=v*r;st.push(`${rp(v)} × ${pc(r)}% = ${rp(t)}`,`Diterima penerima: ${rp(v-t)}`);return{t,st,u:"PPh 23",w:"Pemberi penghasilan memotong pajak dari nilai bruto sebelum membayar. Penerima mendapat bukti potong sebagai kredit pajak.",l:"Pasal 23 UU PPh"}}
+function c24(f){const k=+f.k,l=+f.l,x=+f.x;if(!(k>0&&l>=0&&x>=0))return;if(l>k)return{e:"Penghasilan luar negeri tidak boleh lebih besar dari total penghasilan kena pajak."};
+const tt=f.w==="b"?k*CFG.badan:p17(k).t,lm=l/k*tt,cr=Math.min(x,lm,tt);
+return{t:cr,u:"kredit pajak luar negeri",st:[`PPh terutang total = ${rp(tt)}`,`Batas kredit = ${rp(l)} ÷ ${rp(k)} × ${rp(tt)} = ${rp(lm)}`,`Pajak dibayar di luar negeri = ${rp(x)}`,`Kredit = yang terkecil dari ketiganya = ${rp(cr)}`,`PPh yang masih dibayar di Indonesia = ${rp(tt-cr)}`],w:"Pajak luar negeri boleh mengurangi pajak di Indonesia, tetapi tidak lebih dari porsi pajak yang memang melekat pada penghasilan luar negeri itu.",l:"Pasal 24 UU PPh"}}
+const sel=(id,l,a)=>`<label for="${id}">${l}</label><select id="${id}" name="${id}">${a.map(([v,t])=>`<option value="${v}">${t}</option>`).join("")}</select>`,
+num=(id,l,v)=>`<label for="${id}">${l}</label><input id="${id}" name="${id}" type="number" min="0" inputmode="numeric" value="${v}">`,
+NP=sel("n","Status NPWP",[["1","Punya NPWP"],["0","Tidak punya NPWP"]]);
+const FM={21:()=>sel("m","Cara hitung",[["b","Bulanan (TER)"],["t","Tahunan (Pasal 17)"]])+num("b","Gaji bruto per bulan (Rp)",10000000)+sel("s","Status PTKP",Object.keys(CFG.ptkp).map(k=>[k,`${k} · PTKP ${rp(CFG.ptkp[k])}`]))+NP,
+22:()=>sel("k","Jenis transaksi",Object.entries(CFG.t22).map(([k,v])=>[k,v[0]]))+num("v","Nilai transaksi (Rp, tanpa PPN)",10000000)+NP,
+23:()=>sel("k","Jenis penghasilan",[["15","Dividen, bunga, royalti, hadiah (15%)"],["2","Sewa harta non tanah/bangunan dan jasa tertentu (2%)"]])+num("v","Nilai bruto (Rp, tanpa PPN)",20000000)+NP,
+24:()=>sel("w","Jenis wajib pajak",[["p","Orang pribadi (Pasal 17)"],["b","Badan (22%)"]])+num("k","Total penghasilan kena pajak setahun, termasuk luar negeri (Rp)",400000000)+num("l","Penghasilan dari luar negeri (Rp)",100000000)+num("x","Pajak yang dibayar di luar negeri (Rp)",20000000)};
+const CALC={21:c21,22:c22,23:c23,24:c24};let ct=21;
+/* ===== TAMPILAN ===== */
+const MODE={k:"Kuis Kilat",d:"Pajak Detektif",m:"Cocokkan Kartu"};let ch=0,lb={t:"w",f:0},G;
+const V={
+beranda:()=>`<section class="card"><div class="tut">${tuti(1)}<div><h1>Pajak itu bisa seru!</h1><p>Halo${S.name!=="Tamu"?", "+S.name:""}! Aku Tuti. Yuk belajar PPh 21, 22, 23, dan 24 sambil main.</p></div></div><a class="btn ac" href="#materi">Mulai Belajar</a><a class="btn gh" href="#games">Main Game</a></section>
+<section class="card"><span class="badge">Level ${lv()}</span> <b>${S.xp} XP</b> · 🔥 Streak ${S.st} hari<div class="bar" role="progressbar" aria-label="Progres level" aria-valuenow="${xpb()}" aria-valuemin="0" aria-valuemax="100" style="margin-top:8px"><i style="width:${xpb()}%"></i></div><p class="mu">${100-xpb()} XP lagi menuju level berikutnya · Bab selesai ${S.done.length}/4</p></section>
+<div class="grid">${[21,22,23,24].map(p=>`<a class="card c${p}" href="#materi" data-a="ch" data-p="${p}"><span class="badge pb">${CH[p].i} PPh ${p}</span><h3>${CH[p].t}</h3><p>${CH[p].d.split(":")[0].split(".")[0]}.</p><p class="mu">${S.done.includes(p)?"✅ Bab selesai":"📘 Belum dipelajari"} · ⭐ ${S.pts[p]}</p></a>`).join("")}</div>`,
+materi:()=>{if(ch){const c=CH[ch],sec=[["📖 Definisi",c.d],["👥 Subjek dan objek pajak",c.s],["💹 Tarif",c.r],["🧮 Cara hitung",c.h],["🧾 Contoh kasus",c.c],["💡 Analogi",c.a]];
+return`<button class="btn gh" data-a="bk">← Peta belajar</button><h2>${c.i} ${c.t}</h2>${sec.map(([h,t])=>`<div class="card c${ch}"><h3>${h}</h3><p>${t}</p></div>`).join("")}<div class="card"><h3>⭐ Poin Penting</h3><ul>${c.k.map(x=>`<li>${x}</li>`).join("")}</ul></div><div class="card"><h3>Mini kuis bab</h3><div id="mq"></div></div>`}
+return`<h2>Peta Belajar</h2><p class="mu">Pilih level, selesaikan mini kuis, dapatkan XP.</p><div class="path">${[21,22,23,24].map((p,i)=>`<button class="btn gh node c${p}" data-a="ch" data-p="${p}"><b>${S.done.includes(p)?"✓":i+1}</b><span>${CH[p].i} ${CH[p].t}<br><small class="mu">${S.done.includes(p)?"Selesai":"Mulai bab"}</small></span></button>`).join("")}</div>`},
+kalkulator:()=>`<h2>Kalkulator Pajak</h2><div class="tabs" role="tablist">${[21,22,23,24].map(p=>`<button class="btn gh${p===ct?" on":""}" data-a="ct" data-t="${p}" role="tab" aria-selected="${p===ct}">PPh ${p}</button>`).join("")}</div><form class="card" id="cf" onsubmit="return false">${FM[ct]()}<button class="btn ac" data-a="hit" style="margin-top:14px">Hitung</button></form><div id="rs" role="status"></div><p class="mu">Angka tarif dibaca dari konfigurasi (CFG) di kode sumber.</p>`,
+games:()=>`<h2>Games</h2><div class="grid"><div class="card"><h3>⚡ Kuis Kilat</h3><p>10 soal, 15 detik per soal, 3 nyawa, ada combo.</p>${sel("gp","Topik",[["0","Semua PPh"],["21","PPh 21"],["22","PPh 22"],["23","PPh 23"],["24","PPh 24"]])}<button class="btn" data-a="pk" style="margin-top:10px">Main</button></div><div class="card"><h3>🕵️ Pajak Detektif</h3><p>Baca skenario, tebak PPh yang tepat.</p><button class="btn" data-a="pd">Main</button></div><div class="card"><h3>🃏 Cocokkan Kartu</h3><p>Pasangkan istilah dengan artinya.</p><button class="btn" data-a="pm">Main</button></div></div>`,
+leaderboard:()=>{const BD=[["Raka","🐯",[320,180,150,90]],["Salsa","🦄",[260,240,120,110]],["Dimas","🐼",[210,90,260,70]],["Nadia","🐱",[190,150,100,160]],["Fajar","🦊",[150,120,90,40]],["Citra","🐰",[120,60,80,50]],["Bayu","🐸",[90,50,40,30]],["Lala","🐧",[60,40,30,20]]]; /* data contoh: ganti ke backend */
+const f=lb.f,ix=[21,22,23,24].indexOf(f),rows=BD.map(([n,a,p])=>{const tot=p.reduce((x,y)=>x+y,0),v=f?p[ix]:tot;return{n,a,l:Math.floor(tot/100)+1,v:lb.t==="w"?Math.round(v*.3):v}});
+rows.push({n:S.name+" (kamu)",a:S.av,l:lv(),v:lb.t==="w"?(f?Math.min(S.pts[f],S.wk):S.wk):(f?S.pts[f]:S.xp),me:1});rows.sort((x,y)=>y.v-x.v);const pos=rows.findIndex(r=>r.me)+1;
+return`<h2>Leaderboard</h2><div class="tabs">${[["w","Mingguan"],["a","Keseluruhan"]].map(([k,t])=>`<button class="btn gh${lb.t===k?" on":""}" data-a="lt" data-v="${k}">${t}</button>`).join("")}</div><div class="tabs">${[[0,"Semua"],[21,"PPh 21"],[22,"PPh 22"],[23,"PPh 23"],[24,"PPh 24"]].map(([k,t])=>`<button class="btn gh${f===k?" on":""}" data-a="lf" data-v="${k}">${t}</button>`).join("")}</div><div class="card"><p><b>Posisimu: #${pos}</b></p><table>${rows.map((r,i)=>`<tr${r.me?' class="me"':""}><td>${["🥇","🥈","🥉"][i]||i+1}</td><td>${r.a} ${r.n}</td><td>Lv ${r.l}</td><td align="right"><b>${r.v}</b> poin</td></tr>`).join("")}</table></div><p class="mu">Pemain lain adalah data contoh yang mudah diganti dengan data backend.</p>`},
+profil:()=>`<h2>Profil</h2><div class="card"><div class="tut"><span style="font-size:3rem">${S.av}</span><div><h3>${S.name}</h3><span class="badge">Level ${lv()}</span> ${S.xp} XP · 🔥 ${S.st} hari</div></div><label for="pn">Nama panggilan (mode tamu, tersimpan di perangkat ini)</label><input id="pn" maxlength="16" value="${S.name==="Tamu"?"":S.name}" placeholder="Tamu"><p>${["🦊","🐯","🐼","🦄","🐱","🐸"].map(a=>`<button class="btn gh av${S.av===a?" on":""}" data-a="av" data-v="${a}" aria-label="Avatar ${a}">${a}</button>`).join("")}</p><button class="btn ac" data-a="pf">Simpan</button></div>
+<div class="card"><h3>🏅 Lencana</h3><p>${Object.keys(B).map(k=>`<span class="badge" style="background:${S.bd.includes(k)?"var(--prd)":"var(--mu)"};margin:2px;opacity:${S.bd.includes(k)?1:.6}">${B[k]}</span>`).join(" ")}</p></div>
+<div class="card"><h3>🕘 Riwayat skor</h3>${S.h.length?`<ul>${S.h.map(h=>`<li>${MODE[h.m]}: ${h.sc} poin</li>`).join("")}</ul>`:'<p class="mu">Belum ada. Coba main game!</p>'}</div>`};
+/* ===== GAME ===== */
+function round(){const g=G,el=$("#app");if(g.lv<1||g.i>=g.list.length)return endG();const q=g.list[g.i];
+el.innerHTML=`<div class="card"><p><b>${MODE[g.m]}</b> · ${"❤️".repeat(g.lv)} · 🔥 x${g.cb} · ⭐ ${g.sc} · ${g.i+1}/${g.list.length}</p><div id="qa"></div></div>`;
+ask(q,$("#qa"),ok=>{if(ok){g.cb++;g.ok++;const n=({e:10,m:15,h:20}[q[1]]||10)+Math.min(g.cb,5)*2;g.sc+=n;addPts(q[0],n);if(g.cb>=5)award("cb5")}else{g.cb=0;g.lv--}},()=>{g.i++;round()},g.m==="k"?15:0)}
+function endG(){const g=G;S.h.unshift({m:g.m,sc:g.sc});S.h=S.h.slice(0,8);if(g.m==="d"&&g.sc>=70)award("d");save();const good=g.ok>=g.list.length/2;
+$("#app").innerHTML=`<div class="card"><div class="tut">${tuti(good)}<p><b>${good?"Mantap!":"Semangat, coba lagi ya!"}</b> Kamu benar ${g.ok} dari ${g.list.length} dan meraih ${g.sc} poin.</p></div><button class="btn ac" data-a="${"p"+g.m}" data-again="1">Main lagi</button><a class="btn gh" href="#leaderboard">Lihat peringkat</a></div>`;fx(good)}
+function start(m,list){G={m,list,i:0,lv:3,cb:0,sc:0,ok:0};round()}
+function playM(){const ps=sh(PR).slice(0,6);let cs=sh(ps.flatMap(([a,b],i)=>[{i,t:a},{i,t:b}])),op=[],mv=0,got=0,lock=0;
+const draw=()=>{$("#app").innerHTML=`<div class="card"><h3>🃏 Cocokkan Kartu</h3><p>Langkah: ${mv} · Pasangan: ${got}/6</p><div class="mg">${cs.map((c,k)=>`<button class="cd${c.f?" f":""}${c.m?" m":""}" data-k="${k}">${c.f||c.m?c.t:"?"}</button>`).join("")}</div></div>`;
+$(".mg").onclick=e=>{const b=e.target.closest(".cd");if(!b||lock)return;const c=cs[b.dataset.k];if(c.f||c.m)return;c.f=1;op.push(c);
+if(op.length===2){mv++;const[x,y]=op;if(x.i===y.i){x.m=y.m=1;x.f=y.f=0;got++;op=[];fx(1)}else{lock=1;draw();setTimeout(()=>{x.f=y.f=0;op=[];lock=0;draw()},900);return}}
+draw();if(got===6){const sc=Math.max(10,70-mv*3);addPts(0,sc);S.h.unshift({m:"m",sc});S.h=S.h.slice(0,8);save();$("#app").innerHTML=`<div class="card"><div class="tut">${tuti(1)}<p><b>Semua pasangan ketemu!</b> ${mv} langkah, ${sc} poin.</p></div><button class="btn ac" data-a="pm">Main lagi</button></div>`}}};draw()}
+/* ===== AKSI ===== */
+const A={mc:()=>$(".mb").remove(),
+about:()=>modal("<h3>Tentang stutax.id</h3><p>PajakQuest adalah proyek edukasi pajak untuk pelajar dan mahasiswa. Tujuannya sederhana: belajar PPh 21, 22, 23, dan 24 itu bisa santai, seru, dan tetap akurat.</p>"),
+ch:d=>{ch=+d.p;if(location.hash==="#materi")go()},bk:()=>{ch=0;go()},ct:d=>{ct=+d.t;go()},
+hit:()=>{const f={};document.querySelectorAll("#cf [name]").forEach(e=>f[e.name]=e.value);const r=CALC[ct](f);
+$("#rs").innerHTML=!r?'<p class="card" role="alert">Isi angkanya dengan benar dulu ya.</p>':r.e?`<p class="card" role="alert">${r.e}</p>`:`<div class="card c${ct}"><h3>Hasil: ${rp(r.t)} ${r.u}</h3><ol>${r.st.map(s=>`<li>${s}</li>`).join("")}</ol>${r.x||""}<button class="btn gh" data-a="why">Kenapa begini?</button><p id="why" hidden>${r.w}</p><p class="mu">Dasar hukum: ${r.l}. Hasil untuk belajar, bukan angka resmi.</p></div>`},
+why:()=>{$("#why").hidden=!$("#why").hidden},
+pk:()=>{const p=+$("#gp").value;start("k",sh(QS.filter(q=>!p||q[0]===p)).slice(0,10))},
+pd:()=>start("d",sh(DT).slice(0,8).map(([q,a,e])=>[a,"e",q,[`PPh ${a}`,...[21,22,23,24].filter(x=>x!==a).map(x=>`PPh ${x}`)],e])),
+pm:playM,lt:d=>{lb.t=d.v;go()},lf:d=>{lb.f=+d.v;go()},
+av:d=>{S.av=d.v;save();go()},pf:()=>{S.name=$("#pn").value.trim().slice(0,16)||"Tamu";save();toast("Profil disimpan");go()}};
+A.pk_=A.pk;A.pd_=A.pd;
+document.addEventListener("click",e=>{const t=e.target.closest("[data-a]");if(t){let a=t.dataset.a;if(t.dataset.again&&a==="pk")return A.pk_?go_k():0;(A[a]||(()=>{}))(t.dataset)}});
+function go_k(){start("k",sh(QS).slice(0,10))}
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&$(".mb"))A.mc()});
+$("#th").onclick=()=>{const d=document.documentElement,dark=d.dataset.theme?d.dataset.theme==="dark":matchMedia("(prefers-color-scheme:dark)").matches;d.dataset.theme=dark?"light":"dark";try{localStorage.setItem("pqt",d.dataset.theme)}catch(e){}};
+try{const t=localStorage.getItem("pqt");if(t)document.documentElement.dataset.theme=t}catch(e){}
+$("#upd").textContent=CFG.upd;
+function mini(){const q=QS.find(x=>x[0]===ch);ask(q,$("#mq"),ok=>{if(ok&&!S.done.includes(ch)){S.done.push(ch);addPts(ch,20);if(S.done.length===4)award("ch4");toast("Bab selesai! +20 XP")}},mini,0,"Ulangi kuis")}
+function go(){clearInterval(TM);const r=(location.hash||"#beranda").slice(1),k=V[r]?r:"beranda";$("#app").innerHTML=V[k]();
+document.querySelectorAll("nav a").forEach(a=>a.setAttribute("aria-current",a.hash==="#"+k?"page":"false"));if(k==="materi"&&ch)mini();scrollTo(0,0)}
+addEventListener("hashchange",()=>{if(location.hash!=="#materi")ch=0;go()});go();
+</script>
+</body>
+</html>
